@@ -5,6 +5,7 @@ class cpf:
         self.verificador = []
         self.reverso = 0
         self.res_som = 0
+        self.f_cpf = ""
 
     def gen_nums(self) :
         for x in range(9):
@@ -46,7 +47,18 @@ class cpf:
             res_sub = 11 - res_mod
             self.verificador.append(res_sub)
             self.cpf_incom.append(res_sub)
-        print(self.cpf_incom)
+        self.forma()
+
+    def forma(self):
+        for i, num in enumerate(self.cpf_incom):
+            if i % 3 == 0 and i != 0 and i != 9:
+                self.f_cpf += "."         
+            elif i == 9:
+                self.f_cpf += "-"
+            self.f_cpf += str(num)
+        self.show()
+    def show(self):
+        print(self.f_cpf)
 
 a = cpf()
 
